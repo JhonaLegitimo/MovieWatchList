@@ -11,7 +11,7 @@ body {
 
 header {
     display: flex;
-    height: 300px;
+    height: 250px;
     background-image:
         linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
         url("images/header-bg.png");
@@ -22,6 +22,14 @@ header {
     justify-content: space-between;
     padding: 0 2em;
     color: white;
+}
+
+h1,
+h2,
+p,
+a {
+    margin: 0;
+    padding: 0;
 }
 
 .my-watchlist {
@@ -93,8 +101,9 @@ button[type="submit"] {
 }
 
 .movie-cards-container {
-    height: 100vh;
+    padding: 4em 2em;
     display: flex;
+    justify-content: center;
 }
 
 .simbol-movie {
@@ -105,18 +114,35 @@ button[type="submit"] {
 }
 
 .movie-card {
+    border-bottom: 2px solid gray;
+    padding: 0 2em 1em 0;
     display: flex;
+    gap: 2em;
+}
+
+.movie-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
 }
 
 .movie-poster {
     aspect-ratio: auto;
     width: auto;
     height: 200px;
+    border-radius: 0.3em;
 }
 .title-rating {
     display: flex;
+    align-items: center;
+    gap: 0.8em;
 }
 
 .info-add-rmv-button {
     display: flex;
+}
+
+.resume {
+    max-width: 250px;
+    word-wrap: break-word;
 }
