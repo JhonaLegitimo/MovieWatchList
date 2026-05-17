@@ -91,3 +91,32 @@ button[type="submit"] {
     padding-left: 0.3em;
     gap: 0.5em;
 }
+
+.movie-cards-container {
+    height: 100vh;
+    display: flex;
+}
+
+.simbol-movie {
+    align-self: center;
+    justify-self: center;
+    display: block;
+    font-size: 9em;
+}
+
+.movie-card {
+    display: flex;
+}
+
+.movie-poster {
+    aspect-ratio: auto;
+    width: auto;
+    height: 200px;
+}
+.title-rating {
+    display: flex;
+}
+
+.info-add-rmv-button {
+    display: flex;
+}
