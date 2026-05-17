@@ -13,7 +13,7 @@ form.addEventListener("submit", async (e) => {
     data.Search.forEach((obj) => {
       moviesSearched.push(obj.imdbID);
     });
-    const html = moviesSearched.map(renderCard).join("");
+    const html = await Promise.all(moviesSearched.map(renderCard));
     document.querySelector(".movie-cards-container").innerHTML = html;
   }
 });
