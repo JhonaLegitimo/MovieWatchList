@@ -1,5 +1,6 @@
 const form = document.querySelector("form");
 const moviesSearched = [];
+const myWatchList = JSON.parse(localStorage.getItem("myWatchList")) || [];
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -7,19 +8,26 @@ form.addEventListener("submit", async (e) => {
   const search = data.get("search-movie").toLowerCase();
   if (search) {
     const res = await fetch(
-      `https://www.omdbapi.com/?apikey=27ddec2c&s=${search}`,
+      `https://www.omdbapi.com/?apikey=27ddec2c&s=${search}&type=movie`,
     );
     const data = await res.json();
     data.Search.forEach((obj) => {
       moviesSearched.push(obj.imdbID);
     });
     const html = await Promise.all(moviesSearched.map(renderCard));
-    document.querySelector(".movie-cards-container").innerHTML = html;
+    document.querySelector(".movie-cards-container").innerHTML = html.join("");
   }
 });
 
 document.addEventListener("click", (e) => {
-  if (e.target.classList.contains("add-rmv-button")) {
+  const button = e.target.closest(".add-rmv-button");
+  if (button) {
+    const id = button.dataset.addButton;
+    if (!myWatchList.includes(id)) {
+      myWatchList.push(id);
+      localStorage.setItem("myWatchList", JSON.stringify(myWatchList));
+    }
+    console.log(myWatchList);
   }
 });
 
@@ -40,7 +48,7 @@ async function renderCard(id) {
           <div class="info-add-rmv-button">
               <p>${data.Runtime}</p>
               <p>${data.Genre}</p>
-              <button class="add-rmv-button">
+              <button class="add-rmv-button" data-add-button=${id}>
                   Add watchlist
               </button>
           </div>

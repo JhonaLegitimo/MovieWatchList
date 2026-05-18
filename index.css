@@ -103,8 +103,8 @@ button[type="submit"] {
 
 .movie-cards-container {
     padding: 4em 2em;
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(1fr, 300px));
 }
 
 .simbol-movie {
@@ -116,13 +116,15 @@ button[type="submit"] {
 
 .movie-card {
     border-bottom: 2px solid gray;
-    padding: 0 2em 1em 0;
+    padding: 1em 2em 1em 0;
     display: flex;
     gap: 2em;
 }
 
 .movie-content {
+    width: 100%;
     display: flex;
+    flex: 1 300px;
     flex-direction: column;
     gap: 1em;
 }
@@ -141,10 +143,5 @@ button[type="submit"] {
 
 .info-add-rmv-button {
     display: flex;
-    gap: 0.5em;
-}
-
-.resume {
-    max-width: 250px;
-    word-wrap: break-word;
+    justify-content: space-between;
 }
