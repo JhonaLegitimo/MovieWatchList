@@ -7,6 +7,7 @@ form.addEventListener("submit", async (e) => {
   const data = new FormData(form);
   const search = data.get("search-movie").toLowerCase();
   if (search) {
+    moviesSearched.splice(0, moviesSearched.length);
     const res = await fetch(
       `https://www.omdbapi.com/?apikey=27ddec2c&s=${search}&type=movie`,
     );
